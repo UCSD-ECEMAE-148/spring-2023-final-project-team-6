@@ -1,0 +1,83 @@
+lane_detection_node: 
+  ros__parameters: 
+    Hue_low : 18 
+    Hue_high : 37 
+    Saturation_low : 46 
+    Saturation_high : 255 
+    Value_low : 118
+    Value_high : 255 
+    number_of_lines : 3
+    error_threshold : 0.1 
+    Width_min : 30 
+    Width_max : 500 
+    gray_lower : 25 
+    inverted_filter : 0 
+    kernal_size : 2 
+    erosion_itterations : 5 
+    dilation_itterations : 5 
+    crop_width_decimal : 1.0 
+    rows_to_watch_decimal : 1.0 
+    rows_offset_decimal : 0.01 
+    camera_centerline : 0.2
+calibration_node: 
+  ros__parameters: 
+    Hue_low : 18 
+    Hue_high : 37 
+    Saturation_low : 46 
+    Saturation_high : 255 
+    Value_low : 118
+    Value_high : 255 
+    number_of_lines : 3 
+    error_threshold : 0.1 
+    Width_min : 30 
+    Width_max : 500 
+    gray_lower : 25 
+    inverted_filter : 0 
+    kernal_size : 2 
+    erosion_itterations : 5 
+    dilation_itterations : 5 
+    crop_width_decimal : 1.0 
+    rows_to_watch_decimal : 1.0 
+    rows_offset_decimal : 0.01 
+    camera_centerline : 0.2
+    
+lane_guidance_node: 
+  ros__parameters: 
+    Kp_steering : 0.75
+    Ki_steering : 0.001
+    Kd_steering : 0.01 
+    zero_throttle  : 0.5
+    max_throttle : 0.5
+    min_throttle : 0.5 
+    error_threshold : 0.1 
+    max_right_steering : 2.0
+    max_left_steering : -2.0 
+vesc_twist_node: 
+  ros__parameters: 
+    max_rpm : 6000 
+    steering_polarity : 1 
+    throttle_polarity : 1 
+    zero_throttle  : 0.5
+    max_throttle : 0.5
+    min_throttle : 0.5 
+    max_right_steering : 1.5
+    straight_steering : 0.0
+    max_left_steering : -1.5
+adafruit_twist_node: 
+  ros__parameters: 
+    steering_polarity : 1 
+    throttle_polarity : 1 
+    zero_throttle  : 0.6 
+    max_throttle : 0.6 
+    min_throttle : 0.6 
+    max_right_steering : 2.0
+    straight_steering : 0.0 
+    max_left_steering : -2.0 
+sub_lidar_node: 
+  ros__parameters: 
+    viewing_angle : 360
+    front_degree_angle : 0
+    right_degree_angle : 90
+    left_degree_angle : 270
+    live_laser_feed : 1
+
