@@ -1,5 +1,6 @@
+# ECE MAE 148 - Team 6 - Spring 2023 Final Project
 # Autonomous obstacle detection and lane switching with ROS2
-# Team 6 UCSD JSOE - ECE MAE 148 Spring 2023 Final Project
+## UC San Diego | Jacobs School of Engineering
 
 ## :wave: Team 6: Chat GPT
 
