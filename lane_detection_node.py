@@ -198,7 +198,7 @@ class LaneDetection(Node):
         #Added Code
         currentDetection = int(time.time() * 1000)
 
-        # plotting contours and their centroids
+        
         for contour in contours[:self.number_of_lines]:
             [x, y], [w, h], phi = cv2.minAreaRect(contour)
             rect = cv2.minAreaRect(contour)
@@ -218,30 +218,30 @@ class LaneDetection(Node):
                     img = cv2.line(img, start_point_thresh_neg, end_point_thresh_neg, (0,0,255), 2)
                 except ZeroDivisionError:
                     pass
-        # Further image processing to determine optimal steering value
+        
         try:        
-            # When more than 1 road mark is found
+            
             if len(cx_list) > 1:
                 error_list = []
                 count = 0
-                # calculate errors for all detected road lines
+                
                 for cx_pos in cx_list:
                     error = float((cx_pos - cam_center_line_x) / cam_center_line_x)
                     error_list.append(error)
                 
-                # finding average error of all road lines
+               
                 avg_error = (sum(error_list) / float(len(error_list)))
 
-                # check difference in error from closest to furthest road line
+               
                 p_horizon_diff = abs(error_list[0] - error_list[-1])
 
-                # if path is approximately straight, then steer towards average error
+               
                 if abs(p_horizon_diff) <= self.error_threshold:
                     error_x = avg_error
                     pixel_error = int(cam_center_line_x * (1 + error_x))
                     mid_x, mid_y = pixel_error, int((self.image_height/2))
                     self.get_logger().info(f"Straight curve: [tracking error: {error_x}], [tracking angle: {phi}], [Orange: {boolOrange}]")
-                    #Added Code
+                    
                     if (boolOrange) and (currentDetection - self.lastDetection > self.delayTime):
                         if self.camera_centerline > self.centerLaneMiddle:
                             self.camera_centerline = self.centerLaneInner
@@ -249,23 +249,23 @@ class LaneDetection(Node):
                             self.camera_centerline = self.centerLaneOuter
                         self.lastDetection = currentDetection
 
-                # if path is curved, then steer towards minimum error
+                
                 else:
-                    # exclude any road lines within error threshold by making their error large
+                   
                     for error in error_list:
                         if abs(error) < self.error_threshold:
                             error = 1
                             error_list[count] = error
                         count+=1
                     
-                    # getting min error (closest roadline)
+                    
                     error_x = min(error_list, key=abs)
 
-                    # get index of min error for plotting
+                   
                     error_x_index = error_list.index(min(error_list, key=abs))
                     mid_x, mid_y = cx_list[error_x_index], cy_list[error_x_index]
                     self.get_logger().info(f"Curvy road: [tracking error: {error_x}], [tracking angle: {phi}], [Orange: {boolOrange}]")            
-                    #Added Code
+                   
                     if (boolOrange) and (currentDetection - self.lastDetection > self.delayTime):
                         if self.camera_centerline > self.centerLaneMiddle:
                             self.camera_centerline = self.centerLaneInner
@@ -273,12 +273,12 @@ class LaneDetection(Node):
                             self.camera_centerline = self.centerLaneOuter
                         self.lastDetection = currentDetection
 
-                # plotting roadline to be tracked
+                
                 cv2.circle(img, (mid_x, mid_y), 7, (255, 0, 0), -1)
                 start_point_error = (cam_center_line_x, mid_y)
                 img = cv2.line(img, start_point_error, (mid_x, mid_y), (0,0,255), 4)
 
-                # publish error data
+               
                 self.centroid_error.data = float(error_x)
                 self.centroid_error_publisher.publish(self.centroid_error)
 
