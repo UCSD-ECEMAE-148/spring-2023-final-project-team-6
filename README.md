@@ -12,7 +12,7 @@ Sidath Wijesinghe - ECE - Electrical Engineering
 
 The overall objective of this project is to supplement the baseline lane guidance programs in ROS2  by implementing autonomous lane switching in response to obstacles detected on the race track and automatically stopping at a critical distance threshold to prevent collisions. The reach goal for this project was to implement an adaptive cruise control scheme that could match the speed of a moving object ahead of the robot, e.g. another robot in motion. A LiDAR sensor is integrated with an OAK-D camera using the ROS2 framework to trigger autonomous lane switching on the race track.
 
-
+### Robot
 
 
 
