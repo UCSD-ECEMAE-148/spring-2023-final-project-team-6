@@ -4,7 +4,7 @@
 
 ## :wave: Team 6: Chat GPT
 
-<img src="Figures/Team_Photo.png">
+<img src="Figures/Team_Photo.png"  width="50%" height="50%">
 
 Bora Gursel - MAE - Mechanical Engineering <br>
 Karthik Vetrivelan - ECE - Computer Engineering <br>
@@ -16,7 +16,7 @@ The overall objective of this project is to supplement the baseline lane guidanc
 
 ### Robot
 
-<img src="Figures/Robot.png">
+<img src="Figures/Robot.png" width="50%" height="50%">
 
 ### Schematic
 
@@ -43,7 +43,7 @@ We use the OAK-D Camera to provide vision capabilities alongside OpenCV image pr
 ### Lane Switching Implementation 
 In order to detect the color of the traffic cone obstacle with OpenCV, we used Color Segmentation by masking each frame. Within this mask, the HSV color identification of each pixel on the image is mapped and compared to a threshold range of values corresponding to the acceptable value for the color orange. If a pixel falls within the specified color value range, that pixel will be counted. We set a threshold of whether the camera’s frame is approximately 7.5% orange. If the number of orange pixels breaks that threshold, the lane switching algorithm is activated. Additionally, we used the guidance package values to switch to the adjacent lane and also implemented a non-blocking delay of 4.5 seconds. This delay allows the robot to have a cooldown and not continuously switch lanes when the robot is in the process of switching lanes and it still sees the cone (i.e orange color). This concept can be shown in the figure below.
 
-<img src="Figures/Lane_Switching.png" width="30%" height="30%">
+<img src="Figures/Lane_Switching.png">
 
 ### LiDAR Emergency Stop Implementation 
 The LD06 LiDAR module continuously scans 360° at a 10 Hz sweep frequency with a resolution of just under one degree. The LiDAR outputs the distance measured to the nearest object up to a maximum range of approximately ~15m. The intended purpose of the LiDAR is to detect obstacles directly in front of the robot and stop the robot if the object distance is below a threshold of 40 cm. This will prevent collisions between the robot and obstacles that are not avoided in time with the lane switch algorithm. 
