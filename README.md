@@ -20,7 +20,7 @@ The overall objective of this project is to supplement the baseline lane guidanc
 
 ### Schematic
 
-<img src="Figures/Electrical_Schematic.png">
+<img src="Figures/Electrical_Schematic.png" width="70%" height="70%">
 
 ### Deliverables
 **Must Have:**
