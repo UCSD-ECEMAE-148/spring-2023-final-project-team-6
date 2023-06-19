@@ -4,6 +4,8 @@
 
 ## :wave: Team 6: Chat GPT
 
+<img src="Figures/Team_Photo.png">
+
 Bora Gursel - MAE - Mechanical Engineering <br>
 Karthik Vetrivelan - ECE - Computer Engineering <br>
 Sidath Wijesinghe - ECE - Electrical Engineering
@@ -14,11 +16,11 @@ The overall objective of this project is to supplement the baseline lane guidanc
 
 ### Robot
 
-[Image of Robot]
+<img src="Figures/Robot.png">
 
 ### Schematic
 
-[Image of Schematic]
+<img src="Figures/Electrical_Schematic.png">
 
 ### Deliverables
 **Must Have:**
@@ -41,14 +43,14 @@ We use the OAK-D Camera to provide vision capabilities alongside OpenCV image pr
 ### Lane Switching Implementation 
 In order to detect the color of the traffic cone obstacle with OpenCV, we used Color Segmentation by masking each frame. Within this mask, the HSV color identification of each pixel on the image is mapped and compared to a threshold range of values corresponding to the acceptable value for the color orange. If a pixel falls within the specified color value range, that pixel will be counted. We set a threshold of whether the camera’s frame is approximately 7.5% orange. If the number of orange pixels breaks that threshold, the lane switching algorithm is activated. Additionally, we used the guidance package values to switch to the adjacent lane and also implemented a non-blocking delay of 4.5 seconds. This delay allows the robot to have a cooldown and not continuously switch lanes when the robot is in the process of switching lanes and it still sees the cone (i.e orange color). This concept can be shown in the figure below.
 
-[LANE SWITCHING IMAGE]
+<img src="Figures/Lane_Switching.png" width="30%" height="30%">
 
 ### LiDAR Emergency Stop Implementation 
 The LD06 LiDAR module continuously scans 360° at a 10 Hz sweep frequency with a resolution of just under one degree. The LiDAR outputs the distance measured to the nearest object up to a maximum range of approximately ~15m. The intended purpose of the LiDAR is to detect obstacles directly in front of the robot and stop the robot if the object distance is below a threshold of 40 cm. This will prevent collisions between the robot and obstacles that are not avoided in time with the lane switch algorithm. 
 
 The output data is truncated to a 20° arc directly in front of the robot to remove undesired data collected from areas to the left, right, and rear of the robot. In the event that an obstruction is detected at a distance of 10 cm to 40 cm in front of the robot, the throttle will be set to zero. The minimum threshold value of 10 cm was specified to remove erroneous “zero” readings from the LiDAR while the 40cm threshold is specified as the approximate reaction distance of the robot to an obstacle.
 
-[LIDAR IMAGE]
+<img src="Figures/LIDAR_Detection.png">
 
 ### Final Presentation
 https://docs.google.com/presentation/d/1spB5_34QojcOzi590rJC94e3E9Y_qF3r1F_9n-xsfQw/edit#slide=id.p1
